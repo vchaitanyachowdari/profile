@@ -2,20 +2,25 @@
 
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { motion, useMotionValue, useSpring, useTransform, Variants } from "framer-motion";
+import { motion, useMotionValue, useTransform, Variants } from "framer-motion";
 import type { LucideIcon } from "lucide-react";
 import {
   ArrowUpRight,
-  Dribbble,
   Github,
   Linkedin,
   Twitter,
+  Zap,
+  Globe,
+  Bot,
+  Sparkles,
+  TrendingUp,
 } from "lucide-react";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 
 type Highlight = {
   title: string;
   description: string;
+  icon: LucideIcon;
 };
 
 type SocialLink = {
@@ -27,19 +32,24 @@ type SocialLink = {
 
 const highlights: Highlight[] = [
   {
-    title: "Expertise",
-    description:
-      "Full-stack development, AI integration, and crafting seamless digital experiences.",
+    title: "Founder & CEO",
+    description: "Leading VC AI Creator and Commonly Technologies to redefine enterprise automation.",
+    icon: Sparkles,
   },
   {
-    title: "Latest Project",
-    description:
-      "Building advanced agentic workflows and premium UI/UX systems.",
+    title: "AI Specialist",
+    description: "Architecting production-grade multi-agent pipelines and intelligent workflows.",
+    icon: Bot,
   },
   {
-    title: "Open to Collaborate",
-    description:
-      "Looking for interesting projects in AI, SaaS, and creative tech.",
+    title: "GEO Expert",
+    description: "Optimizing content for the AI search era (ChatGPT, Perplexity, Google SGE).",
+    icon: TrendingUp,
+  },
+  {
+    title: "Scale & Impact",
+    description: "50+ projects delivered for 30+ global clients with 10x operational efficiency.",
+    icon: Zap,
   },
 ];
 
@@ -61,6 +71,12 @@ const socialLinks: SocialLink[] = [
     handle: "vchaitanyachowdari",
     href: "https://github.com/vchaitanyachowdari",
     icon: Github,
+  },
+  {
+    label: "Website",
+    handle: "chowdari.in",
+    href: "https://chowdari.in",
+    icon: Globe,
   },
 ];
 
@@ -86,36 +102,6 @@ const itemVariants: Variants = {
     },
   },
 };
-
-// Spotlight Card Component for extra premium feel
-function SpotlightCard({ children, className }: { children: React.ReactNode; className?: string }) {
-  const mouseX = useMotionValue(0);
-  const mouseY = useMotionValue(0);
-
-  function onMouseMove({ currentTarget, clientX, clientY }: React.MouseEvent) {
-    const { left, top } = currentTarget.getBoundingClientRect();
-    mouseX.set(clientX - left);
-    mouseY.set(clientY - top);
-  }
-
-  return (
-    <motion.div
-      onMouseMove={onMouseMove}
-      className={`group relative overflow-hidden rounded-2xl border border-border/40 bg-background/60 p-5 backdrop-blur transition-all hover:border-border/60 hover:shadow-lg ${className}`}
-    >
-      <motion.div
-        className="pointer-events-none absolute -inset-px opacity-0 transition duration-300 group-hover:opacity-100"
-        style={{
-          background: useTransform(
-            [mouseX, mouseY],
-            ([x, y]) => `radial-gradient(600px circle at ${x}px ${y}px, rgba(var(--primary-rgb), 0.06), transparent 80%)`
-          ),
-        }}
-      />
-      {children}
-    </motion.div>
-  );
-}
 
 export function GlassmorphismPortfolioBlock() {
   const [mounted, setMounted] = useState(false);
@@ -193,7 +179,7 @@ export function GlassmorphismPortfolioBlock() {
                   <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-primary opacity-75"></span>
                   <span className="relative inline-flex h-2 w-2 rounded-full bg-primary"></span>
                 </span>
-                Portfolio Insight
+                India&apos;s Youngest AI Systems Builder
               </Badge>
 
               <div className="space-y-6">
@@ -206,7 +192,7 @@ export function GlassmorphismPortfolioBlock() {
                 >
                   V Chaitanya Chowdari, <br />
                   <span className="bg-gradient-to-r from-foreground to-foreground/50 bg-clip-text text-transparent">
-                    Full Stack Developer
+                    Enterprise AI Specialist
                   </span>
                 </motion.h2>
                 <motion.p
@@ -216,33 +202,41 @@ export function GlassmorphismPortfolioBlock() {
                   transition={{ duration: 0.7, delay: 0.2 }}
                   className="max-w-xl text-lg leading-relaxed text-foreground/70 md:text-xl font-light"
                 >
-                  Architecting intelligent systems and crafting high-end digital experiences. 
-                  Specializing in React, Next.js, and AI-driven automation for forward-thinking teams.
+                  Architecting production-grade AI systems that eliminate manual bottlenecks 
+                  and unlock 10x operational efficiency. Building intelligent machines that work while you sleep.
                 </motion.p>
               </div>
 
               {/* Highlights grid */}
-              <div className="grid gap-6">
-                {highlights.map((item, index) => (
-                  <motion.div
-                    key={item.title}
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.5, delay: 0.1 * index }}
-                    whileHover={{ scale: 1.02 }}
-                    className="group relative overflow-hidden rounded-2xl border border-border/40 bg-background/60 p-6 backdrop-blur-xl transition-all hover:border-primary/30 hover:shadow-[0_8px_30px_rgb(0,0,0,0.04)] dark:hover:shadow-[0_8px_30px_rgb(255,255,255,0.02)]"
-                  >
-                    <div className="relative space-y-2">
-                      <p className="text-[10px] font-bold uppercase tracking-[0.3em] text-primary/70">
-                        {item.title}
-                      </p>
-                      <p className="text-[15px] leading-relaxed text-foreground/80 font-medium">
-                        {item.description}
-                      </p>
-                    </div>
-                  </motion.div>
-                ))}
+              <div className="grid gap-4 sm:grid-cols-2">
+                {highlights.map((item, index) => {
+                  const Icon = item.icon;
+                  return (
+                    <motion.div
+                      key={item.title}
+                      initial={{ opacity: 0, y: 20 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      viewport={{ once: true }}
+                      transition={{ duration: 0.5, delay: 0.1 * index }}
+                      whileHover={{ scale: 1.02 }}
+                      className="group relative overflow-hidden rounded-2xl border border-border/40 bg-background/60 p-5 backdrop-blur-xl transition-all hover:border-primary/30 hover:shadow-[0_8px_30px_rgb(0,0,0,0.04)]"
+                    >
+                      <div className="relative space-y-3">
+                        <div className="flex h-10 w-10 items-center justify-center rounded-full bg-primary/10 text-primary transition-colors group-hover:bg-primary group-hover:text-primary-foreground">
+                          <Icon className="h-5 w-5" />
+                        </div>
+                        <div className="space-y-1">
+                          <p className="text-[10px] font-bold uppercase tracking-[0.3em] text-primary/70">
+                            {item.title}
+                          </p>
+                          <p className="text-[13px] leading-relaxed text-foreground/80 font-medium">
+                            {item.description}
+                          </p>
+                        </div>
+                      </div>
+                    </motion.div>
+                  );
+                })}
               </div>
 
               {/* CTA Buttons */}
@@ -255,12 +249,12 @@ export function GlassmorphismPortfolioBlock() {
                 <Button
                   size="lg"
                   onClick={() =>
-                    window.open("https://casper.studio/case-studies", "_blank")
+                    window.open("https://chowdari.in", "_blank")
                   }
-                  className="group relative h-14 w-full gap-3 overflow-hidden rounded-full px-10 text-sm uppercase tracking-[0.25em] transition-all hover:shadow-2xl sm:w-auto overflow-hidden"
+                  className="group relative h-14 w-full gap-3 overflow-hidden rounded-full px-10 text-sm uppercase tracking-[0.25em] transition-all hover:shadow-2xl sm:w-auto"
                 >
                   <span className="relative z-10 flex items-center gap-2">
-                    View case studies
+                    Explore Ecosystem
                     <ArrowUpRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1 group-hover:-translate-y-1" />
                   </span>
                   <div className="absolute inset-0 bg-gradient-to-r from-primary via-primary/80 to-primary opacity-100 transition-transform duration-500 group-hover:scale-105" />
@@ -301,7 +295,7 @@ export function GlassmorphismPortfolioBlock() {
                     </h3>
                     <div className="inline-flex rounded-full border border-border/50 bg-background/40 px-4 py-1.5 backdrop-blur">
                       <p className="text-[10px] font-bold uppercase tracking-[0.4em] text-foreground/60">
-                        Full Stack Developer · AI Engineer
+                        Enterprise AI Specialist · Founder
                       </p>
                     </div>
                   </motion.div>
@@ -311,10 +305,10 @@ export function GlassmorphismPortfolioBlock() {
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.6, delay: 0.3 }}
-                    className="mt-6 max-w-sm text-[15px] leading-relaxed text-foreground/70 font-light"
+                    className="mt-6 max-w-sm text-[14px] leading-relaxed text-foreground/70 font-light"
                   >
-                    Crafting intelligent interfaces and high-performance
-                    applications with a focus on modern aesthetics and user-centric design.
+                    Helping businesses scale through intelligent multi-agent pipelines and 
+                    Generative Engine Optimization (GEO).
                   </motion.p>
                 </div>
 
