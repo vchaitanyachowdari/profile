@@ -27,45 +27,39 @@ type SocialLink = {
 
 const highlights: Highlight[] = [
   {
-    title: "Collaborations",
+    title: "Expertise",
     description:
-      "Linear, Framer, Gamma, Clearbit, and early-stage founders crafting premium launches.",
+      "Full-stack development, AI integration, and crafting seamless digital experiences.",
   },
   {
-    title: "Latest drop",
+    title: "Latest Project",
     description:
-      "Aurora OS motion system · 47 reusable blueprints, adaptive tokens, and launch storyboard.",
+      "Building advanced agentic workflows and premium UI/UX systems.",
   },
   {
-    title: "Availability",
+    title: "Open to Collaborate",
     description:
-      "2 advisory spots for Q1 · Remote friendly across EU & US time zones.",
+      "Looking for interesting projects in AI, SaaS, and creative tech.",
   },
 ];
 
 const socialLinks: SocialLink[] = [
   {
     label: "Twitter",
-    handle: "@caspermotions",
-    href: "https://x.com/caspermotions",
+    handle: "@vchaitanyac",
+    href: "https://x.com/vchaitanyac",
     icon: Twitter,
   },
   {
     label: "LinkedIn",
-    handle: "Casper Lightman",
-    href: "https://linkedin.com/in/casperlightman",
+    handle: "V Chaitanya Chowdari",
+    href: "https://linkedin.com/in/vchaitanyachowdari",
     icon: Linkedin,
   },
   {
-    label: "Dribbble",
-    handle: "caspermotion",
-    href: "https://dribbble.com/caspermotion",
-    icon: Dribbble,
-  },
-  {
     label: "GitHub",
-    handle: "casper-studio",
-    href: "https://github.com/casper-studio",
+    handle: "vchaitanyachowdari",
+    href: "https://github.com/vchaitanyachowdari",
     icon: Github,
   },
 ];
@@ -210,9 +204,9 @@ export function GlassmorphismPortfolioBlock() {
                   transition={{ duration: 0.7, delay: 0.1, ease: "easeOut" }}
                   className="text-4xl font-bold tracking-tight text-foreground md:text-5xl lg:text-6xl leading-[1.1]"
                 >
-                  Casper Lightman, <br />
+                  V Chaitanya Chowdari, <br />
                   <span className="bg-gradient-to-r from-foreground to-foreground/50 bg-clip-text text-transparent">
-                    Product Designer
+                    Full Stack Developer
                   </span>
                 </motion.h2>
                 <motion.p
@@ -222,10 +216,8 @@ export function GlassmorphismPortfolioBlock() {
                   transition={{ duration: 0.7, delay: 0.2 }}
                   className="max-w-xl text-lg leading-relaxed text-foreground/70 md:text-xl font-light"
                 >
-                  Principal product designer pairing narrative motion with
-                  premium SaaS brands. Casper leads founders and product teams
-                  through expressive design systems that convert curiosity into
-                  momentum.
+                  Architecting intelligent systems and crafting high-end digital experiences. 
+                  Specializing in React, Next.js, and AI-driven automation for forward-thinking teams.
                 </motion.p>
               </div>
 
@@ -291,8 +283,8 @@ export function GlassmorphismPortfolioBlock() {
                   >
                     <div className="absolute left-1/2 top-1/2 h-40 w-40 -translate-x-1/2 -translate-y-1/2 rounded-full bg-primary/25 blur-3xl animate-pulse" />
                     <img
-                      src="https://images.unsplash.com/photo-1544723795-3fb6469f5b39?w=640&q=80"
-                      alt="Casper Lightman"
+                      src="/avatar.png"
+                      alt="V Chaitanya Chowdari"
                       className="relative h-40 w-40 rounded-full border-4 border-white/20 object-cover shadow-[0_32px_64px_rgba(0,0,0,0.3)] dark:border-white/10 dark:shadow-[0_32px_64px_rgba(0,0,0,0.5)]"
                     />
                   </motion.div>
@@ -305,11 +297,11 @@ export function GlassmorphismPortfolioBlock() {
                     className="space-y-3"
                   >
                     <h3 className="text-3xl font-bold tracking-tight text-foreground">
-                      Casper Lightman
+                      V Chaitanya Chowdari
                     </h3>
                     <div className="inline-flex rounded-full border border-border/50 bg-background/40 px-4 py-1.5 backdrop-blur">
                       <p className="text-[10px] font-bold uppercase tracking-[0.4em] text-foreground/60">
-                        Product Designer · Motion Director
+                        Full Stack Developer · AI Engineer
                       </p>
                     </div>
                   </motion.div>
@@ -321,8 +313,8 @@ export function GlassmorphismPortfolioBlock() {
                     transition={{ duration: 0.6, delay: 0.3 }}
                     className="mt-6 max-w-sm text-[15px] leading-relaxed text-foreground/70 font-light"
                   >
-                    Partnering with future-facing teams to choreograph
-                    interfaces that feel cinematic yet effortless.
+                    Crafting intelligent interfaces and high-performance
+                    applications with a focus on modern aesthetics and user-centric design.
                   </motion.p>
                 </div>
 
